@@ -372,10 +372,10 @@
     if (!dragging.el) return
     
     // zepto <> jquery compatibility
-    var el = dragging.el, clone
+    var el = dragging.el, clone = el.clone();
     dragging.stop(originalEvent, false)
 
-    $(this.el).append(clone = el.clone())
+    if (this.opts.clone) $(this.el).append(clone)
     
     this.el.trigger('droppable:drop', { item: clone, draggable: el })
   }
